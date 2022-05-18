@@ -28,7 +28,7 @@ https://docs.microsoft.com/en-us/graph/api/resources/callrecords-api-overview?vi
 https://docs.microsoft.com/en-us/graph/api/callrecords-callrecord-get?view=graph-rest-1.0&tabs=http  
 
 
-<img width="700" alt="Picture1" src="https://user-images.githubusercontent.com/41346103/169072494-1d579116-5132-4768-8bd8-b41d90dcdd7e.png">
+<img width="600" alt="Picture1" src="https://user-images.githubusercontent.com/41346103/169072494-1d579116-5132-4768-8bd8-b41d90dcdd7e.png">
 
 
 
@@ -63,7 +63,7 @@ https://docs.microsoft.com/en-us/graph/api/callrecords-callrecord-get?view=graph
 - Finally, click **Grant admin consent** for {tenantName} 
 - Output should look like the following
 
-<< Imgae >> 
+![Picture2](https://user-images.githubusercontent.com/41346103/169073234-20624b32-a12a-4ef9-94c5-0c59294d7574.png)
 
  
  ### Step 2.a: Register AD Application 
@@ -85,7 +85,7 @@ https://docs.microsoft.com/en-us/graph/api/callrecords-callrecord-get?view=graph
  
  Once done you should have 2 logic apps looking like below.  
  
- ![alt test](http://picsum.photo/200/200)
+ ![Picture3](https://user-images.githubusercontent.com/41346103/169073284-3b4ad374-9c51-46a7-b3ee-c304d0a54fd3.png)
  
   ### Step 3: Configure Logic Apps ( RetrieveCallId )
  
@@ -93,7 +93,7 @@ https://docs.microsoft.com/en-us/graph/api/callrecords-callrecord-get?view=graph
 - Click **Logic app designer** in left rail 
 - From the default template select When a **HTTP request** is received 
  
- <<Image>>
+ ![Picture4](https://user-images.githubusercontent.com/41346103/169073299-604b79e7-d82b-45cc-bfcf-52e58ecea0c6.png)
  
 - Click **Save** 
 - Once saved, service will populate the **HTTP POST URL** 
@@ -101,7 +101,8 @@ https://docs.microsoft.com/en-us/graph/api/callrecords-callrecord-get?view=graph
  
 Reference screenshot after this step : 
  
- <<Image>>
+ ![Picture5](https://user-images.githubusercontent.com/41346103/169073308-679829a3-7151-46a5-ab31-a464b44b13d1.png)
+
  
 - Add **New Step**
 - Search for **Data Operations** Built-in and **Compose** 
@@ -112,7 +113,8 @@ Reference screenshot after this step :
 
 - Click **OK** 
  
- <<Image>>
+ ![Picture6](https://user-images.githubusercontent.com/41346103/169073365-c3c0fc35-ebe2-4a27-9959-ec4f1e912851.png)
+
  
 - Add **New Step** > **Data Options** > **Compose**
 - Rename the Compose window to **Client ID** 
@@ -130,7 +132,9 @@ Reference screenshot after this step :
 - Under Choose a value select Outputs from **Validation Token**
 - Point it to Expression **null**
  
- <<image>>
+ ![Picture7](https://user-images.githubusercontent.com/41346103/169073361-f8b12027-5707-459e-a72a-34af065e511d.png)
+
+
 - If **True** > **Add an action** > **Responses**
    - Put the value of **Status Code** as **200** 
    - Keep the **Headers** as Empty 
@@ -145,7 +149,7 @@ Reference screenshot after this step :
   - URI : *https://graph.microsoft.com/v1.0/communications/callRecords/id*
   - Hover over Id you should see **resouceData.id**
 
- <<Image>>
+ <img width="374" alt="Picture8" src="https://user-images.githubusercontent.com/41346103/169073357-51706b0a-70eb-4c66-8deb-e7dc694842a5.png">
  
   - Select **Authentication Type** > Checkbox 
   - Authentication type: **Active Directory OAuth**
@@ -207,7 +211,8 @@ Reference screenshot after this step :
 } 
  ```
  
-<<image>>
+![Picture9](https://user-images.githubusercontent.com/41346103/169073353-dde9b038-6b58-46a7-98e6-5d2a54928980.png)
+
  
 - Add New Step > **HTTP**  
   - Input Method as **POST** 
@@ -226,7 +231,8 @@ Reference screenshot after this step :
  - Run the logic app and validate the output.  
 - If successful, you will see an output with Subscription ID as below. 
  
- <<image>>
+ ![Picture10](https://user-images.githubusercontent.com/41346103/169073351-5825550d-a74a-4554-b010-13b92e935a58.png)
+
  
 - Open Logic App ***“Webhooksubscribe”*** again. 
 - Navigate to **HTTP**  
@@ -234,10 +240,13 @@ Reference screenshot after this step :
 - Update the URI and append the **subscription ID** which we received (screenshot for reference below)
  
  
- <<Image>>
+ ![Picture11](https://user-images.githubusercontent.com/41346103/169073347-5ff6d8e5-a8ae-48b4-84a0-94c28b73aaa3.png)
+
+
  - Run the logic app again, validate if the renew of subscription was successful.  
  
- <<image>>
+ ![Picture12](https://user-images.githubusercontent.com/41346103/169073344-49b40fcc-b6c7-4eec-82ae-7a9a50fea16d.png)
+
  
  **Reason for Editing HTTP** : Subscription ID will remain same, and we need to patch the Subscription ID at regular intervals to renew the subscription to keep getting the data.  
  
@@ -252,6 +261,4 @@ Reference screenshot after this step :
  
  Output Below 
  
- << image >>
- 
- <<image>>
+<img width="292" alt="Picture13" src="https://user-images.githubusercontent.com/41346103/169073340-d978d2e4-f86a-4993-a85c-d0d05c2b2b2c.png">
