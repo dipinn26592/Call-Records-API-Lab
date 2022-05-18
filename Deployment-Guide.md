@@ -28,7 +28,8 @@ https://docs.microsoft.com/en-us/graph/api/resources/callrecords-api-overview?vi
 https://docs.microsoft.com/en-us/graph/api/callrecords-callrecord-get?view=graph-rest-1.0&tabs=http  
 
 
-<<IMAGE>>
+<img width="700" alt="Picture1" src="https://user-images.githubusercontent.com/41346103/169072494-1d579116-5132-4768-8bd8-b41d90dcdd7e.png">
+
 
 
 ## Deployment Steps 
