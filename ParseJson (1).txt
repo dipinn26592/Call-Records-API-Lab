@@ -1,0 +1,112 @@
+{
+    "properties": {
+        "@@odata.context": {
+            "type": "string"
+        },
+        "endDateTime": {
+            "type": "string"
+        },
+        "id": {
+            "type": "string"
+        },
+        "joinWebUrl": {},
+        "lastModifiedDateTime": {
+            "type": "string"
+        },
+        "modalities": {
+            "items": {
+                "type": "string"
+            },
+            "type": "array"
+        },
+        "organizer": {
+            "properties": {
+                "acsApplicationInstance": {},
+                "acsUser": {},
+                "application": {},
+                "applicationInstance": {},
+                "device": {},
+                "encrypted": {},
+                "guest": {},
+                "onPremises": {},
+                "phone": {},
+                "spoolApplicationInstance": {},
+                "spoolUser": {},
+                "user": {
+                    "properties": {
+                        "displayName": {
+                            "type": "string"
+                        },
+                        "id": {
+                            "type": "string"
+                        },
+                        "registrantId": {},
+                        "tenantId": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "participants": {
+            "items": {
+                "properties": {
+                    "acsApplicationInstance": {},
+                    "acsUser": {},
+                    "application": {},
+                    "applicationInstance": {},
+                    "device": {},
+                    "encrypted": {},
+                    "guest": {},
+                    "onPremises": {},
+                    "phone": {},
+                    "spoolApplicationInstance": {},
+                    "spoolUser": {},
+                    "user": {
+                        "properties": {
+                            "displayName": {
+                                "type": "string"
+                            },
+                            "id": {
+                                "type": "string"
+                            },
+                            "registrantId": {},
+                            "tenantId": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    }
+                },
+                "required": [
+                    "acsUser",
+                    "spoolUser",
+                    "phone",
+                    "guest",
+                    "encrypted",
+                    "onPremises",
+                    "acsApplicationInstance",
+                    "spoolApplicationInstance",
+                    "applicationInstance",
+                    "application",
+                    "device",
+                    "user"
+                ],
+                "type": "object"
+            },
+            "type": "array"
+        },
+        "startDateTime": {
+            "type": "string"
+        },
+        "type": {
+            "type": "string"
+        },
+        "version": {
+            "type": "integer"
+        }
+    },
+    "type": "object"
+}
