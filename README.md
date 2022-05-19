@@ -1,6 +1,6 @@
 # Lab deployment guide for Microsoft Graph Call Records API using Logic Apps
 
-This blog is authored and technically implemented with the help of **Phi-lay Nguyen**. Thanks a lot :)
+This blog is authored and technically implemented with the help of [**Phi-lay Nguyen**](https://github.com/phnguy). Thanks a lot :)
 
 ## Summary 
 
