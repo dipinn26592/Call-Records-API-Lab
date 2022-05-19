@@ -1,5 +1,7 @@
 # Lab deployment guide for Microsoft Graph Call Records API using Logic Apps
 
+This blog is authored and technically implemented with the help of **Phi-lay Nguyen**. Thanks a lot :)
+
 ## Summary 
 
 The following is a step-by-step guide for using Azure Logic Apps to leverage the Microsoft Graph Call Records API to solve customer challenges using CDR information.  
