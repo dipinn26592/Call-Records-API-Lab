@@ -130,7 +130,7 @@ Reference screenshot after this step :
 - Rename the Compose window to **Secret**
 - Input the **Secret** from app registration (Step 1)  
 
-- Add **New Step** > **Data Options** > **Compose**
+- Add **New Step** > **Control** > **Condition**
 - Under Choose a value select Outputs from **Validation Token**
 - Point it to Expression **null**
  
