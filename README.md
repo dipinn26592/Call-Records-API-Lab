@@ -132,6 +132,7 @@ Reference screenshot after this step :
 
 - Add **New Step** > **Control** > **Condition**
 - Under Choose a value select Outputs from **Validation Token**
+- Set the condition as is **not equat to**
 - Point it to Expression **null**
  
  ![Picture7](https://user-images.githubusercontent.com/41346103/169073361-f8b12027-5707-459e-a72a-34af065e511d.png)
