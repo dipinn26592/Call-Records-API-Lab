@@ -213,6 +213,7 @@ Reference screenshot after this step :
 “resource”: “/communications/callRecords” 
 } 
  ```
+ *Note: Copy Paste Might not work, you might have to type the function in correct format*
  
 ![Picture9](https://user-images.githubusercontent.com/41346103/169073353-dde9b038-6b58-46a7-98e6-5d2a54928980.png)
 
