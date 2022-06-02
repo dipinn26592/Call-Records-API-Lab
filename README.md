@@ -210,7 +210,7 @@ Reference screenshot after this step :
 “clientState”: “secretClientValue”, 
 “expirationDateTime”: “Output from previous compose expirationDatetime”, 
 “notificationURL”: “Output from previous compose NotificationURl”, 
-“resource”: “/communications/callRecords” 
+“resource”: “communications/callRecords” 
 } 
  ```
  *Note: Copy Paste Might not work, you might have to type the function in correct format*
