@@ -44,6 +44,7 @@ https://docs.microsoft.com/en-us/graph/api/callrecords-callrecord-get?view=graph
 - Click + **New registration**
 - Provide a Name for your app (example: ***CallrecordsId***)
 - Supported account types **“Single tenant”**
+  *If you have subscription associated with different tenant select All Microsoftaccount Users*
 - Click **Register**
 - After app is registered, document the following
   - **Application (client) ID**: {guid}
@@ -65,7 +66,7 @@ https://docs.microsoft.com/en-us/graph/api/callrecords-callrecord-get?view=graph
 - Finally, click **Grant admin consent** for {tenantName} 
 - Output should look like the following
 
-![Picture2](https://user-images.githubusercontent.com/41346103/169073234-20624b32-a12a-4ef9-94c5-0c59294d7574.png)
+![image](https://user-images.githubusercontent.com/41346103/172828928-b72bdac5-776a-49e9-8cad-101b680f2ff2.png)
 
  
  ### Step 2.a: Register AD Application 
@@ -142,6 +143,9 @@ Reference screenshot after this step :
    - Put the value of **Status Code** as **200** 
    - Keep the **Headers** as Empty 
    - Under **Body** select Outputs from **Validation Token**
+ 
+ ![image](https://user-images.githubusercontent.com/41346103/172829422-670c8452-1c00-46e3-8858-1c26658287bd.png)
+ 
  
 - If **False** > **Add a Action** > **Built-in Control** > **ForEach**  
   - Under **ForEach** loop  
