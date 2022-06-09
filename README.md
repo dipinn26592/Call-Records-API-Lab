@@ -66,8 +66,7 @@ https://docs.microsoft.com/en-us/graph/api/callrecords-callrecord-get?view=graph
 - Finally, click **Grant admin consent** for {tenantName} 
 - Output should look like the following
 
-![image](https://user-images.githubusercontent.com/41346103/172828928-b72bdac5-776a-49e9-8cad-101b680f2ff2.png)
-
+![Picture2](https://user-images.githubusercontent.com/41346103/169073234-20624b32-a12a-4ef9-94c5-0c59294d7574.png)
  
  ### Step 2.a: Register AD Application 
  
