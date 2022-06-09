@@ -150,6 +150,8 @@ Reference screenshot after this step :
  
  >"Save the Call ID to the SQL database ( can be skipped )"
  
+ >Steps to set up Azure SQL server and database [here SQLConnection.md](https://github.com/dipinn26592/Call-Records-API-Lab/blob/dipinn26592-patch-1/SQLConnection.md) 
+ 
  - **Add a Action** > **Built-in Control** > **ForEach**  
  - Under **ForEach** loop  
  - Enter Expression as `triggerBody()?['value'] `
@@ -184,6 +186,14 @@ Reference screenshot after this step :
 - Add **New Step** > **Data Operations** > **Parse JSON** 
   - Input Content as Output **“Body”** from HTTP 
   - Schema: Copy/paste text from ***ParseJson.txt*** file 
+
+- **Add a Action** > **Built-in Control** > **ForEach**  
+ - Under **ForEach** loop  
+ - Enter Expression as `triggerBody()?['value'] `
+ - Add **New Step** > **SQL** > **Interst row (V2)**
+ - Select your **Server Name, Database name, Table name**
+ - Select **Add new parameter**
+ - Select the Parameters as per SQL Table that you have specified.
 
 - Outside the Foreach loop Add **New Step** > **Response** 
   - Status Code: **202** 
@@ -284,3 +294,12 @@ Reference screenshot after this step :
  Output Below 
  
 <img width="292" alt="Picture13" src="https://user-images.githubusercontent.com/41346103/169073340-d978d2e4-f86a-4993-a85c-d0d05c2b2b2c.png">
+
+SQL Server Output
+<img width="1235" alt="image" src="https://user-images.githubusercontent.com/41346103/172856562-206118de-f912-4ff1-9316-e8bb9683f835.png">
+
+
+## How to reduce cost of storeing the data in Azure
+1. Set up your SQL Server OnPremise
+2. Create and Expose a internet facing Webhook to listen to Suscription Output
+
