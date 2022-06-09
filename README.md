@@ -44,7 +44,7 @@ https://docs.microsoft.com/en-us/graph/api/callrecords-callrecord-get?view=graph
 - Click + **New registration**
 - Provide a Name for your app (example: ***CallrecordsId***)
 - Supported account types **“Single tenant”**
-  '*If you have subscription associated with different tenant select All Microsoftaccount Users*'
+  `*If you have subscription associated with different tenant select All Microsoftaccount Users*`
 - Click **Register**
 - After app is registered, document the following
   - **Application (client) ID**: {guid}
@@ -103,7 +103,7 @@ https://docs.microsoft.com/en-us/graph/api/callrecords-callrecord-get?view=graph
  
 Reference screenshot after this step : 
  
- ![Picture5](https://user-images.githubusercontent.com/41346103/169073308-679829a3-7151-46a5-ab31-a464b44b13d1.png)
+![image](https://user-images.githubusercontent.com/41346103/172828928-b72bdac5-776a-49e9-8cad-101b680f2ff2.png)
 
  
 - Add **New Step**
@@ -146,16 +146,31 @@ Reference screenshot after this step :
  ![image](https://user-images.githubusercontent.com/41346103/172829422-670c8452-1c00-46e3-8858-1c26658287bd.png)
  
  
-- If **False** > **Add a Action** > **Built-in Control** > **ForEach**  
-  - Under **ForEach** loop  
-   - Enter Expression as `triggerBody()?['value'] `
+ - If **False** > 
+ 
+ ```Save the Call ID to the SQL database ( can be skipped )```
+ 
+ - **Add a Action** > **Built-in Control** > **ForEach**  
+ - Under **ForEach** loop  
+ - Enter Expression as `triggerBody()?['value'] `
+ - Add **New Step** > **SQL** > **Interst row (V2) **
+ - Select your **Server Name, Database name, Table name**
+ - Select **Add new parameter**
+ - Check Box **id** and Select **id** from when a HTTP request is received
 
- - Add **New Step** > **HTTP**  
+![image](https://user-images.githubusercontent.com/41346103/172833966-8251abc4-278a-4474-b38e-57865fefa316.png)
+
+```Make HTTP Call against CallID and save the detailed output to Database ( can be skipped )```
+
+ - **Add a Action** > **Built-in Control** > **ForEach**  
+ - Under **ForEach** loop 
+ - Enter Expression as `triggerBody()?['value'] `
+ - Add **New Step** > **HTTP** 
   - Method : **GET** 
-  - URI : *https://graph.microsoft.com/v1.0/communications/callRecords/id*
-  - Hover over Id you should see **resouceData.id**
-
- <img width="374" alt="Picture8" src="https://user-images.githubusercontent.com/41346103/169073357-51706b0a-70eb-4c66-8deb-e7dc694842a5.png">
+  - URI : *https://graph.microsoft.com/v1.0/communications/callRecords/[id]?$expand=sessions($expand=segments)*
+  - Hover over Id you should see **items('DetailedCallRecords')?['resourceData']?['id']**
+ 
+ ![image](https://user-images.githubusercontent.com/41346103/172834798-0e83f3f7-bf77-4ee6-9463-92be9032a290.png)
  
   - Select **Authentication Type** > Checkbox 
   - Authentication type: **Active Directory OAuth**
