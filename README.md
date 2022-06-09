@@ -44,7 +44,7 @@ https://docs.microsoft.com/en-us/graph/api/callrecords-callrecord-get?view=graph
 - Click + **New registration**
 - Provide a Name for your app (example: ***CallrecordsId***)
 - Supported account types **“Single tenant”**
-  `*If you have subscription associated with different tenant select All Microsoftaccount Users*`
+  `If you have subscription associated with different tenant select All Microsoftaccount Users`
 - Click **Register**
 - After app is registered, document the following
   - **Application (client) ID**: {guid}
