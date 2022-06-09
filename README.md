@@ -148,19 +148,19 @@ Reference screenshot after this step :
  
  - If **False** > 
  
- ```Save the Call ID to the SQL database ( can be skipped )```
+ >"Save the Call ID to the SQL database ( can be skipped )"
  
  - **Add a Action** > **Built-in Control** > **ForEach**  
  - Under **ForEach** loop  
  - Enter Expression as `triggerBody()?['value'] `
- - Add **New Step** > **SQL** > **Interst row (V2) **
+ - Add **New Step** > **SQL** > **Interst row (V2)**
  - Select your **Server Name, Database name, Table name**
  - Select **Add new parameter**
  - Check Box **id** and Select **id** from when a HTTP request is received
 
-![image](https://user-images.githubusercontent.com/41346103/172833966-8251abc4-278a-4474-b38e-57865fefa316.png)
+![image](https://user-images.githubusercontent.com/41346103/172836508-d8b4f831-73db-4798-b466-188fe677ba63.png)
 
-```Make HTTP Call against CallID and save the detailed output to Database ( can be skipped )```
+>"Make HTTP Call against CallID and save the detailed output to Database ( can be skipped )"
 
  - **Add a Action** > **Built-in Control** > **ForEach**  
  - Under **ForEach** loop 
@@ -231,7 +231,7 @@ Reference screenshot after this step :
 “resource”: “communications/callRecords” 
 } 
  ```
- *Note: Copy Paste Might not work, you might have to type the function in correct format*
+ *Note: Copy paste might not work, you might have to type the function in correct format*
  
 ![Picture9](https://user-images.githubusercontent.com/41346103/169073353-dde9b038-6b58-46a7-98e6-5d2a54928980.png)
 
