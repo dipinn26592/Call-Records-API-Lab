@@ -23,7 +23,7 @@ To follow this guide, you will need the following:
 
 ### High Level Overview 
 
-In this solution we will create 2 logic Apps. The first one will be used to create\renew a webhook subscription and the second one will be used to retrieve the call ID. 
+In this solution we will create 2 logic Apps. The first one will be used to create\renew a webhook subscription and the second one will be used to retrieve the call ID, post which the call ID's are save to an Azure SQL Data Base. 
 
 #### Reference Documents 
 https://docs.microsoft.com/en-us/graph/api/resources/callrecords-api-overview?view=graph-rest-1.0  
