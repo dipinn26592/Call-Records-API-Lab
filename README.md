@@ -95,7 +95,7 @@ https://docs.microsoft.com/en-us/graph/api/callrecords-callrecord-get?view=graph
 - Click **Logic app designer** in left rail 
 - From the default template select When a **HTTP request** is received 
  
- ![Picture4](https://user-images.githubusercontent.com/41346103/169073299-604b79e7-d82b-45cc-bfcf-52e58ecea0c6.png)
+ <img src= "https://user-images.githubusercontent.com/41346103/169073299-604b79e7-d82b-45cc-bfcf-52e58ecea0c6.png" width="500" height="250">
  
 - Click **Save** 
 - Once saved, service will populate the **HTTP POST URL** 
@@ -103,8 +103,8 @@ https://docs.microsoft.com/en-us/graph/api/callrecords-callrecord-get?view=graph
  
 Reference screenshot after this step : 
  
-![image](https://user-images.githubusercontent.com/41346103/172828928-b72bdac5-776a-49e9-8cad-101b680f2ff2.png)
-
+  <img src= "https://user-images.githubusercontent.com/41346103/172828928-b72bdac5-776a-49e9-8cad-101b680f2ff2.png" width="500" height="280">
+  
  
 - Add **New Step**
 - Search for **Data Operations** Built-in and **Compose** 
@@ -143,7 +143,8 @@ Reference screenshot after this step :
    - Keep the **Headers** as Empty 
    - Under **Body** select Outputs from **Validation Token**
  
- ![image](https://user-images.githubusercontent.com/41346103/172829422-670c8452-1c00-46e3-8858-1c26658287bd.png)
+ <img src= "https://user-images.githubusercontent.com/41346103/172829422-670c8452-1c00-46e3-8858-1c26658287bd.png" width="500" height="280">
+   
  
  
  - If **False** > 
@@ -159,8 +160,9 @@ Reference screenshot after this step :
  - Select your **Server Name, Database name, Table name**
  - Select **Add new parameter**
  - Check Box **id** and Select **id** from when a HTTP request is received
+ -
+<img src= "https://user-images.githubusercontent.com/41346103/172836508-d8b4f831-73db-4798-b466-188fe677ba63.png" width="500" height="280">
 
-![image](https://user-images.githubusercontent.com/41346103/172836508-d8b4f831-73db-4798-b466-188fe677ba63.png)
 
 >"Make HTTP Call against CallID and save the detailed output to Database ( can be skipped )"
 
@@ -172,6 +174,7 @@ Reference screenshot after this step :
   - URI : *https://graph.microsoft.com/v1.0/communications/callRecords/[id]?$expand=sessions($expand=segments)*
   - Hover over Id you should see **items('DetailedCallRecords')?['resourceData']?['id']**
  
+
  ![image](https://user-images.githubusercontent.com/41346103/172834798-0e83f3f7-bf77-4ee6-9463-92be9032a290.png)
  
   - Select **Authentication Type** > Checkbox 
