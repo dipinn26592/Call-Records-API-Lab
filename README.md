@@ -132,7 +132,7 @@ Reference screenshot after this step :
 
 - Add **New Step** > **Control** > **Condition**
 - Under Choose a value select Outputs from **Validation Token**
-- Set the condition as is **not equat to**
+- Set the condition as is **not equal to**
 - Point it to Expression **null**
  
  ![Picture7](https://user-images.githubusercontent.com/41346103/169073361-f8b12027-5707-459e-a72a-34af065e511d.png)
@@ -155,7 +155,7 @@ Reference screenshot after this step :
  - **Add a Action** > **Built-in Control** > **ForEach**  
  - Under **ForEach** loop  
  - Enter Expression as `triggerBody()?['value'] `
- - Add **New Step** > **SQL** > **Interst row (V2)**
+ - Add **New Step** > **SQL** > **Insert row (V2)**
  - Select your **Server Name, Database name, Table name**
  - Select **Add new parameter**
  - Check Box **id** and Select **id** from when a HTTP request is received
@@ -190,7 +190,7 @@ Reference screenshot after this step :
 - **Add a Action** > **Built-in Control** > **ForEach**  
  - Under **ForEach** loop  
  - Enter Expression as `triggerBody()?['value'] `
- - Add **New Step** > **SQL** > **Interst row (V2)**
+ - Add **New Step** > **SQL** > **Insert row (V2)**
  - Select your **Server Name, Database name, Table name**
  - Select **Add new parameter**
  - Select the Parameters as per SQL Table that you have specified.
@@ -258,7 +258,7 @@ Reference screenshot after this step :
   - Input Audience as ***https://graph.microsoft.com***  
   - Input value of ***Client ID*** as output from Compose 
   - Set Credential Type as **Secret** 
-  - Input value of **Secre**t as output from Compose  
+  - Input value of **Secret**t as output from Compose  
  
  - Run the logic app and validate the output.  
 - If successful, you will see an output with Subscription ID as below. 
@@ -299,7 +299,7 @@ SQL Server Output
 <img width="1235" alt="image" src="https://user-images.githubusercontent.com/41346103/172856562-206118de-f912-4ff1-9316-e8bb9683f835.png">
 
 
-## How to reduce cost of storeing the data in Azure
+## How to reduce cost of Storing the data in Azure
 1. Set up your SQL Server OnPremise
-2. Create and Expose a internet facing Webhook to listen to Suscription Output
+2. Create and Expose a internet facing Webhook to listen to Subscription Output
 
