@@ -305,4 +305,5 @@ SQL Server Output
 ## How to reduce cost of Storing the data in Azure
 1. Set up your SQL Server OnPremise
 2. Create and Expose a internet facing Webhook to listen to Subscription Output
+3. Use the endpoint as notification URL in the above steps
 
