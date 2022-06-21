@@ -23,7 +23,7 @@ To follow this guide, you will need the following:
 
 ### High Level Overview 
 
-In this solution we will create 2 logic Apps. The first one will be used to create\renew a webhook subscription and the second one will be used to retrieve the call ID. 
+In this solution we will create 2 logic Apps. The first one will be used to create\renew a webhook subscription and the second one will be used to retrieve the call ID, post which the call ID's are save to an Azure SQL Data Base. 
 
 #### Reference Documents 
 https://docs.microsoft.com/en-us/graph/api/resources/callrecords-api-overview?view=graph-rest-1.0  
@@ -44,6 +44,7 @@ https://docs.microsoft.com/en-us/graph/api/callrecords-callrecord-get?view=graph
 - Click + **New registration**
 - Provide a Name for your app (example: ***CallrecordsId***)
 - Supported account types **“Single tenant”**
+  `If you have subscription associated with different tenant select All Microsoftaccount Users`
 - Click **Register**
 - After app is registered, document the following
   - **Application (client) ID**: {guid}
@@ -66,7 +67,6 @@ https://docs.microsoft.com/en-us/graph/api/callrecords-callrecord-get?view=graph
 - Output should look like the following
 
 ![Picture2](https://user-images.githubusercontent.com/41346103/169073234-20624b32-a12a-4ef9-94c5-0c59294d7574.png)
-
  
  ### Step 2.a: Register AD Application 
  
@@ -95,7 +95,7 @@ https://docs.microsoft.com/en-us/graph/api/callrecords-callrecord-get?view=graph
 - Click **Logic app designer** in left rail 
 - From the default template select When a **HTTP request** is received 
  
- ![Picture4](https://user-images.githubusercontent.com/41346103/169073299-604b79e7-d82b-45cc-bfcf-52e58ecea0c6.png)
+ <img src= "https://user-images.githubusercontent.com/41346103/169073299-604b79e7-d82b-45cc-bfcf-52e58ecea0c6.png" width="500" height="250">
  
 - Click **Save** 
 - Once saved, service will populate the **HTTP POST URL** 
@@ -103,8 +103,8 @@ https://docs.microsoft.com/en-us/graph/api/callrecords-callrecord-get?view=graph
  
 Reference screenshot after this step : 
  
- ![Picture5](https://user-images.githubusercontent.com/41346103/169073308-679829a3-7151-46a5-ab31-a464b44b13d1.png)
-
+  <img src= "https://user-images.githubusercontent.com/41346103/172828928-b72bdac5-776a-49e9-8cad-101b680f2ff2.png" width="500" height="280">
+  
  
 - Add **New Step**
 - Search for **Data Operations** Built-in and **Compose** 
@@ -132,7 +132,7 @@ Reference screenshot after this step :
 
 - Add **New Step** > **Control** > **Condition**
 - Under Choose a value select Outputs from **Validation Token**
-- Set the condition as is **not equat to**
+- Set the condition as is **not equal to**
 - Point it to Expression **null**
  
  ![Picture7](https://user-images.githubusercontent.com/41346103/169073361-f8b12027-5707-459e-a72a-34af065e511d.png)
@@ -143,16 +143,39 @@ Reference screenshot after this step :
    - Keep the **Headers** as Empty 
    - Under **Body** select Outputs from **Validation Token**
  
-- If **False** > **Add a Action** > **Built-in Control** > **ForEach**  
-  - Under **ForEach** loop  
-   - Enter Expression as `triggerBody()?['value'] `
+ <img src= "https://user-images.githubusercontent.com/41346103/172829422-670c8452-1c00-46e3-8858-1c26658287bd.png" width="500" height="280">
+   
+ 
+ 
+ - If **False** > 
+ 
+ >"Save the Call ID to the SQL database ( can be skipped )"
+ 
+ >Steps to set up Azure SQL server and database [here SQLConnection.md](https://github.com/dipinn26592/Call-Records-API-Lab/blob/dipinn26592-patch-1/SQLConnection.md) 
+ 
+ - **Add a Action** > **Built-in Control** > **ForEach**  
+ - Under **ForEach** loop  
+ - Enter Expression as `triggerBody()?['value'] `
+ - Add **New Step** > **SQL** > **Insert row (V2)**
+ - Select your **Server Name, Database name, Table name**
+ - Select **Add new parameter**
+ - Check Box **id** and Select **id** from when a HTTP request is received
+ -
+<img src= "https://user-images.githubusercontent.com/41346103/172836508-d8b4f831-73db-4798-b466-188fe677ba63.png" width="500" height="280">
 
- - Add **New Step** > **HTTP**  
+
+>"Make HTTP Call against CallID and save the detailed output to Database ( can be skipped )"
+
+ - **Add a Action** > **Built-in Control** > **ForEach**  
+ - Under **ForEach** loop 
+ - Enter Expression as `triggerBody()?['value'] `
+ - Add **New Step** > **HTTP** 
   - Method : **GET** 
-  - URI : *https://graph.microsoft.com/v1.0/communications/callRecords/id*
-  - Hover over Id you should see **resouceData.id**
+  - URI : *https://graph.microsoft.com/v1.0/communications/callRecords/[id]?$expand=sessions($expand=segments)*
+  - Hover over Id you should see **items('DetailedCallRecords')?['resourceData']?['id']**
+ 
 
- <img width="374" alt="Picture8" src="https://user-images.githubusercontent.com/41346103/169073357-51706b0a-70eb-4c66-8deb-e7dc694842a5.png">
+ ![image](https://user-images.githubusercontent.com/41346103/172834798-0e83f3f7-bf77-4ee6-9463-92be9032a290.png)
  
   - Select **Authentication Type** > Checkbox 
   - Authentication type: **Active Directory OAuth**
@@ -166,6 +189,14 @@ Reference screenshot after this step :
 - Add **New Step** > **Data Operations** > **Parse JSON** 
   - Input Content as Output **“Body”** from HTTP 
   - Schema: Copy/paste text from ***ParseJson.txt*** file 
+
+- **Add a Action** > **Built-in Control** > **ForEach**  
+ - Under **ForEach** loop  
+ - Enter Expression as `triggerBody()?['value'] `
+ - Add **New Step** > **SQL** > **Insert row (V2)**
+ - Select your **Server Name, Database name, Table name**
+ - Select **Add new parameter**
+ - Select the Parameters as per SQL Table that you have specified.
 
 - Outside the Foreach loop Add **New Step** > **Response** 
   - Status Code: **202** 
@@ -213,7 +244,7 @@ Reference screenshot after this step :
 “resource”: “communications/callRecords” 
 } 
  ```
- *Note: Copy Paste Might not work, you might have to type the function in correct format*
+ *Note: Copy paste might not work, you might have to type the function in correct format*
  
 ![Picture9](https://user-images.githubusercontent.com/41346103/169073353-dde9b038-6b58-46a7-98e6-5d2a54928980.png)
 
@@ -230,7 +261,7 @@ Reference screenshot after this step :
   - Input Audience as ***https://graph.microsoft.com***  
   - Input value of ***Client ID*** as output from Compose 
   - Set Credential Type as **Secret** 
-  - Input value of **Secre**t as output from Compose  
+  - Input value of **Secret**t as output from Compose  
  
  - Run the logic app and validate the output.  
 - If successful, you will see an output with Subscription ID as below. 
@@ -266,3 +297,12 @@ Reference screenshot after this step :
  Output Below 
  
 <img width="292" alt="Picture13" src="https://user-images.githubusercontent.com/41346103/169073340-d978d2e4-f86a-4993-a85c-d0d05c2b2b2c.png">
+
+SQL Server Output
+<img width="1235" alt="image" src="https://user-images.githubusercontent.com/41346103/172856562-206118de-f912-4ff1-9316-e8bb9683f835.png">
+
+
+## How to reduce cost of Storing the data in Azure
+1. Set up your SQL Server OnPremise
+2. Create and Expose a internet facing Webhook to listen to Subscription Output
+
